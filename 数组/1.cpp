@@ -11,8 +11,8 @@
 输出: -1
 解释: 2 不存在 nums 中因此返回 -1
 */
-#include <iostream>;
-#include <vector>;
+#include <iostream>
+#include <vector>
 using namespace std;
 
 int search(vector<int> &nums, int target){
@@ -34,5 +34,4 @@ int search(vector<int> &nums, int target){
 int main(void){
     vector<int> num = {-1,0,3,5,9,12};
     cout << search(num, 9) << endl;
-    return 0;
 }
