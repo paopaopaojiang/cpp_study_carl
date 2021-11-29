@@ -15,3 +15,49 @@
 输入：head = [7,7,7,7], val = 7
 输出：[]
 */
+#include <iostream>
+using namespace std;
+
+struct ListNode {
+    int val;  // 节点上存储的元素
+    ListNode *next;  // 指向下一个节点的指针
+    ListNode(int x) : val(x), next(nullptr) {}  // 节点的构造函数
+};
+
+ListNode* removeElement(ListNode* head, int val){
+    ListNode* dummyHead = new ListNode(0);
+    dummyHead->next = head;
+    ListNode* cur = dummyHead;
+    while(cur->next != nullptr){
+        if(cur->next->val == val){
+            ListNode* tmp = cur->next;
+            cur->next = cur->next->next;
+            delete tmp;
+        }else{
+            cur = cur->next;
+        }
+    }
+    head = dummyHead->next;
+    delete dummyHead;
+    return head;
+}
+
+void show(ListNode* head){
+	while (head->next != nullptr)
+	{
+		cout << head->val << ' ';
+		head = head->next;
+	}
+	cout<< head->val;
+}
+
+int main(){
+    ListNode* head = new ListNode(1);
+    ListNode* a = new ListNode(2);head->next = a;
+    ListNode* b = new ListNode(6);a->next = b;
+    ListNode* c = new ListNode(3);b->next = c;
+    ListNode* d = new ListNode(4);c->next = d;
+    ListNode* e = new ListNode(5);d->next = e;
+    ListNode* f = new ListNode(6);e->next = f;
+    show(removeElement(head, 6));
+}
