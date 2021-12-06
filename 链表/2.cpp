@@ -19,3 +19,40 @@ linkedList.deleteAtIndex(1);  //现在链表是1-> 3
 linkedList.get(1);            //返回3
 */
 #include <iostream>
+using namespace std;
+
+class ListNode{
+    int val;
+    ListNode* next;
+    ListNode(int x) : val(x), next(nullptr){}
+};
+
+class MyLinkedList{
+private:
+    ListNode* dummyHead;
+    int size;
+public:
+    MyLinkedList(){
+        dummyHead = new ListNode(0);
+        size = 0;
+    }
+    int get(int index){
+        if(index > size - 1 || index < 0){
+            return -1;
+        }
+        ListNode* cur = dummyHead->next;
+        while (index)
+        {
+            cur = cur->next;
+            index--;
+        }
+        return cur->val;
+        
+    }
+    void addAtHead(int val){
+        ListNode* newNode = new ListNode(val);
+        newNode->next = dummyHead->next;
+        dummyHead->next = newNode;
+        size++;
+    }
+}
