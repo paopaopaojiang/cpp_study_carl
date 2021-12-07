@@ -42,7 +42,7 @@ ListNode* removeElement(ListNode* head, int val){
     return head;
 }
 
-void show(ListNode* head){
+void print(ListNode* head){
 	while (head->next != nullptr)
 	{
 		cout << head->val << ' ';
@@ -59,5 +59,5 @@ int main(){
     ListNode* d = new ListNode(4);c->next = d;
     ListNode* e = new ListNode(5);d->next = e;
     ListNode* f = new ListNode(6);e->next = f;
-    show(removeElement(head, 6));
+    print(removeElement(head, 6));
 }
